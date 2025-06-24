@@ -2,10 +2,54 @@
 import EmailList from "@/components/EmailList";
 import { useContext } from "react";
 import { EmailContext } from "@/context/email-context";
+import { ToastContext } from "@/context/toast-context";
 import { Email, EmailStateTypes } from "@/types";
 
 export default function EmailPage() {
     const { selectedEmail, setEmails, setSelectedEmail } = useContext(EmailContext) || {selectedEmail: null, setEmails: () => {}, setSelectedEmail: () => {}};
+    const { addToast } = useContext(ToastContext) || { addToast: () => {} };
+
+    const handleSelectedEmailDelete = () => {
+      if (!selectedEmail) return;
+
+      // Store the original email for undo functionality
+      const originalEmail = selectedEmail;
+      
+      // Move email to trash
+      setEmails((prevEmails: Email[]) => 
+        prevEmails.map(email => 
+          email.id === selectedEmail.id 
+            ? {...email, state: EmailStateTypes.TRASH} 
+            : email
+        )
+      );
+      
+      setSelectedEmail(null);
+
+      // Show toast with undo functionality
+      addToast({
+        message: `Email from ${originalEmail.sender_name} deleted`,
+        type: 'success',
+        showUndo: true,
+        onUndo: () => {
+          // Restore email to inbox
+          setEmails((prevEmails: Email[]) => 
+            prevEmails.map(email => 
+              email.id === originalEmail.id 
+                ? {...email, state: EmailStateTypes.INBOX} 
+                : email
+            )
+          );
+          
+          // Show success toast for undo
+          addToast({
+            message: `Email from ${originalEmail.sender_name} restored`,
+            type: 'success'
+          });
+        }
+      });
+    };
+
     return (
         <div className="flex h-screen bg-gray-50">
           <EmailList />
@@ -38,16 +82,16 @@ export default function EmailPage() {
                     {selectedEmail?.email_body}
                   </p>
                   
-                  {selectedEmail.state !== EmailStateTypes.TRASH && <div className=" flex justify-end mt-6">
-                    <button 
-                    onClick={() => {
-                      setEmails((prevEmails:Email[]) => prevEmails.map(email => email.id === selectedEmail.id ? {...email, state: EmailStateTypes.TRASH} : email));
-                      setSelectedEmail(null);
-                    }}
-                    className="px-4 py-2 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
-                      Delete
-                    </button>
-                  </div>}
+                  {selectedEmail.state !== EmailStateTypes.TRASH && (
+                    <div className="flex justify-end mt-6">
+                      <button 
+                        onClick={handleSelectedEmailDelete}
+                        className="px-4 py-2 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
           )}
