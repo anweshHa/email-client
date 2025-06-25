@@ -1,3 +1,13 @@
+
+
+
+
+machine coding + react interview + js interview codedamn + polyfills + custom hooks
+google docs project
+FE system design
+design patterns revise
+tailwind css
+
 You are required to build a basic email client using JavaScript (React/Vanilla JS) that allows users to:
 View a list of emails.(Email mock api response at the end of the doc)
 Read an email's content.
@@ -24,7 +34,15 @@ this is the given code, in the machine coding round I might be asked to add some
 which might include implementing a polyfill or custom hook.
 suggest some of those features to me so that I can practice them beforehand.
 
+
+FE system design interview with anmol
+is joining Flipkart as UI-3 right now is good for my career. is this 
+ask about behavioural questions
 ===========================================================================================================================================================
+
+I want to create a email layout, page should have 2 sections, 
+35% width should be occupied for listing the emails and 65% should be occupied for viewing a selected email.
+keep the code simple and easy to understand and explain.
 
 w-[35%], w-2 (meaning width = 0.5rem), h-2 (meaning height = 0.5rem).
 bg-white, bg-gray-50
@@ -82,6 +100,20 @@ cursor-pointer
 | `leading-normal`  | `1.5`             | Default spacing            |
 | `leading-relaxed` | `1.625`           | Comfortable paragraph text |
 | `leading-loose`   | `2`               | Very spacious lines        |
+
+the delete button is coming at the very last line, i want it in the next line right after the email content.
+that means i guess the height of the email content section should be only that much what is occupied by the email content.
+modify the code only for this.
+
+const filteredEmails = useMemo(() => getFilteredEmails(), [activeEmailType, emails]);
+what is the difference between doing above and doing below? do we get any advantage when we use one over the other?
+const [filteredEmails, setFilteredEmails] = useState<Email[]>(getFilteredEmails());
+        useEffect(() => {
+          setFilteredEmails(getFilteredEmails());
+        }, [activeEmailType, emails]);
+
+bulk delete or mark read, infinite scroll, pagination
+url update on search, highlight matched text in list, do not remove search result as long as in same url
 
 =====================================================================================================================================
 
