@@ -4,6 +4,7 @@ import { Email, EmailState, EmailStateTypes } from "@/types";
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import InboxEmailList from "./InboxEmailList";
 import TrashEmailList from "./TrashEmailList";
+import Pagination from "./Pagination";
 import { useDebounceValue } from "@/hooks/use-debounce-value";
 
 export default function EmailList(
@@ -25,13 +26,26 @@ export default function EmailList(
     }
 
     const query = debouncedSearchTerm.toLowerCase();
-    return sectionFiltered.filter(email => 
+    return sectionFiltered
+    .filter(email => 
       email.sender_name.toLowerCase().includes(query) ||
       email.title.toLowerCase().includes(query) ||
       email.email_body.toLowerCase().includes(query) ||
       email.sender.toLowerCase().includes(query)
-    );
+    )
+    .map(email => ({
+      ...email,
+      sender_name: highlightText(email.sender_name, query),
+      title: highlightText(email.title, query),
+      email_body: highlightText(email.email_body, query),
+      sender: highlightText(email.sender, query)
+    }));
   };
+  const highlightText = (text: string, query: string) => {
+    if (!query) return text;
+
+    return text.replace(query, `<span class="bg-yellow-200 font-semibold">${query}</span>`);
+  }
   const {selectedEmail, setSelectedEmail, emails, scrollPosition, setScrollPosition} = 
     useContext(EmailContext) || {selectedEmail: null, setSelectedEmail: () => {}, emails: [], scrollPosition: 0, setScrollPosition: () => {}};
   console.log(emails);
@@ -39,11 +53,27 @@ export default function EmailList(
   const [activeEmailType, setActiveEmailType] = useState<EmailState>(EmailStateTypes.INBOX);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const debouncedSearchTerm = useDebounceValue(searchTerm, 10000);
+  
   // const [filteredEmails, setFilteredEmails] = useState<Email[]>(getFilteredEmails());
   const filteredEmails = useMemo(
     () => getFilteredEmails(emails, activeEmailType, debouncedSearchTerm), 
     [emails, activeEmailType, debouncedSearchTerm]
   );
+
+    // Pagination state
+  const emailsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeEmailType,debouncedSearchTerm]);
+  console.log(`currentPage: ${currentPage}`);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredEmails.length / emailsPerPage);
+  const startIndex = (currentPage - 1) * emailsPerPage;
+  const endIndex = startIndex + emailsPerPage;
+  const currentEmails = filteredEmails.slice(startIndex, endIndex);
+  
   // const handleScroll = () => {
   //   if (scrollContainerRef.current) {
   //     setScrollPosition(scrollContainerRef.current.scrollTop);
@@ -130,9 +160,20 @@ export default function EmailList(
           // onScroll={handleScroll}
           className="flex-1 overflow-y-auto">
             {activeEmailType === EmailStateTypes.INBOX 
-            ? <InboxEmailList filteredEmails={filteredEmails}/> 
-            : <TrashEmailList filteredEmails={filteredEmails}/>} 
+            ? <InboxEmailList filteredEmails={currentEmails}/> 
+            : <TrashEmailList filteredEmails={currentEmails}/>} 
         </div>
+        
+        {/* Pagination Footer */}
+        {totalPages > 1 && (
+          <div className="border-t border-gray-200 p-4 bg-gray-50">
+            <Pagination
+              pageNumber={currentPage}
+              setPageNumber={setCurrentPage}
+              totalPages={totalPages}
+            />
+          </div>
+        )}
       </div>
   );
 }

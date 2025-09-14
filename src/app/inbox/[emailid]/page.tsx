@@ -58,12 +58,12 @@ export default function EmailPage() {
                 {/* Email Header */}
                 <div className="p-6 border-b border-gray-200">
                   <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-                    {selectedEmail?.title}
+                  <span dangerouslySetInnerHTML={{ __html: selectedEmail?.title }} />
                   </h2>
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="text-sm text-gray-600">From: {selectedEmail?.sender}</p>
-                      <p className="text-sm text-gray-600">Date: {new Date(selectedEmail?.time).toLocaleString()}</p>
+                      <p className="text-sm text-gray-600">From: <span dangerouslySetInnerHTML={{ __html: selectedEmail?.sender }} /></p>
+                      <p className="text-sm text-gray-600">Date: <span dangerouslySetInnerHTML={{ __html: new Date(selectedEmail?.time).toLocaleString() }} /></p>
                     </div>
                     <div className="flex gap-2">
                       <button className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 ">
@@ -79,7 +79,7 @@ export default function EmailPage() {
                 {/* Email Content */}
                 <div className="p-6">
                   <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
-                    {selectedEmail?.email_body}
+                    <span dangerouslySetInnerHTML={{ __html: selectedEmail?.email_body }} />
                   </p>
                   
                   {selectedEmail.state !== EmailStateTypes.TRASH && (

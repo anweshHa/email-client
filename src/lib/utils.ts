@@ -140,6 +140,146 @@ const mockEmails = [
       "title": "Early Bird Registration Open",
       "time": "2025-02-02T10:45:00Z",
       "email_body": "Hello,\n\nEarly bird registration for Conference 2025 is now open. Reserve your spot today!\n\nRegards,\nConference Team \na\ns\nd\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz"
+    },
+    {
+      "id": "a1b2c3d10e0f0g0h0",
+      "sender": "team@collab.com",
+      "title": "New Project Invitation",
+      "time": "2025-02-01T11:20:00Z",
+      "email_body": "Hello,\n\nYou've been invited to collaborate on a new project. Please confirm your participation.\n\nBest,\nTeam Collab"
+    },
+    {
+      "id": "a1b2c3d11e0f0g0h0",
+      "sender": "notifications@social.com",
+      "title": "New Connection Request",
+      "time": "2025-01-31T13:15:00Z",
+      "email_body": "Hi,\n\nYou have a new connection request waiting for your approval.\n\nRegards,\nSocial Team"
+    },
+    {
+      "id": "a1b2c3d12e0f0g0h0",
+      "sender": "billing@service.com",
+      "title": "Your Subscription Renewal",
+      "time": "2025-01-30T16:45:00Z",
+      "email_body": "Dear Customer,\n\nYour subscription will renew automatically next week. Review your plan details.\n\nThanks,\nBilling Team"
+    },
+    {
+      "id": "a1b2c3d13e0f0g0h0",
+      "sender": "training@skills.com",
+      "title": "New Course Available",
+      "time": "2025-01-29T09:10:00Z",
+      "email_body": "Hello,\n\nWe've launched a new course that matches your interests. Enroll now!\n\nBest,\nSkills Team"
+    },
+    {
+      "id": "a1b2c3d14e0f0g0h0",
+      "sender": "delivery@logistics.com",
+      "title": "Package Delivery Update",
+      "time": "2025-01-28T14:30:00Z",
+      "email_body": "Hi,\n\nYour package delivery has been rescheduled. Check the new delivery window.\n\nRegards,\nLogistics Team"
+    },
+    {
+      "id": "a1b2c3d15e0f0g0h0",
+      "sender": "feedback@survey.com",
+      "title": "Share Your Experience",
+      "time": "2025-01-27T10:00:00Z",
+      "email_body": "Dear User,\n\nWe'd love to hear about your recent experience with our service.\n\nThanks,\nSurvey Team"
+    },
+    {
+      "id": "a1b2c3d16e0f0g0h0",
+      "sender": "alerts@weather.com",
+      "title": "Weather Advisory",
+      "time": "2025-01-26T07:45:00Z",
+      "email_body": "Hello,\n\nImportant weather advisory for your area. Stay safe!\n\nBest,\nWeather Alerts"
+    },
+    {
+      "id": "a1b2c3d17e0f0g0h0",
+      "sender": "recruiting@careers.com",
+      "title": "Interview Scheduled",
+      "time": "2025-01-25T15:20:00Z",
+      "email_body": "Hi,\n\nYour interview has been scheduled for next week. See attached details.\n\nRegards,\nHR Team"
+    },
+    {
+      "id": "a1b2c3d18e0f0g0h0",
+      "sender": "support@software.com",
+      "title": "New Feature Released",
+      "time": "2025-01-24T12:10:00Z",
+      "email_body": "Hello,\n\nWe've released an exciting new feature. Check it out!\n\nBest,\nSoftware Team"
+    },
+    {
+      "id": "a1b2c3d19e0f0g0h0",
+      "sender": "community@forum.com",
+      "title": "New Discussion in Your Group",
+      "time": "2025-01-23T18:30:00Z",
+      "email_body": "Hi,\n\nThere's new activity in your discussion group. Join the conversation!\n\nCheers,\nCommunity Team"
+    },
+    {
+      "id": "a1b2c3d20e0f0g0h0",
+      "sender": "legal@company.com",
+      "title": "Updated Terms of Service",
+      "time": "2025-01-22T11:00:00Z",
+      "email_body": "Dear User,\n\nWe've updated our Terms of Service. Please review the changes.\n\nBest,\nLegal Team"
+    },
+    {
+      "id": "a1b2c3d21e0f0g0h0",
+      "sender": "events@local.com",
+      "title": "Upcoming Events in Your Area",
+      "time": "2025-01-21T17:15:00Z",
+      "email_body": "Hello,\n\nDiscover exciting events happening near you this weekend.\n\nRegards,\nLocal Events"
+    },
+    {
+      "id": "a1b2c3d22e0f0g0h0",
+      "sender": "health@wellness.com",
+      "title": "Your Weekly Health Tips",
+      "time": "2025-01-20T08:45:00Z",
+      "email_body": "Hi,\n\nHere are your personalized health tips for this week. Stay healthy!\n\nBest,\nWellness Team"
+    },
+    {
+      "id": "a1b2c3d23e0f0g0h0",
+      "sender": "finance@invest.com",
+      "title": "Quarterly Investment Report",
+      "time": "2025-01-19T14:00:00Z",
+      "email_body": "Dear Investor,\n\nYour quarterly investment report is now available.\n\nRegards,\nFinance Team"
+    },
+    {
+      "id": "a1b2c3d24e0f0g0h0",
+      "sender": "updates@network.com",
+      "title": "New Connections in Your Network",
+      "time": "2025-01-18T10:30:00Z",
+      "email_body": "Hello,\n\nSee who's new in your professional network this week.\n\nBest,\nNetwork Team"
+    },
+    {
+      "id": "a1b2c3d25e0f0g0h0",
+      "sender": "library@books.com",
+      "title": "Your Borrowed Books Due Soon",
+      "time": "2025-01-17T13:20:00Z",
+      "email_body": "Hi,\n\nSome of your borrowed books are due soon. Renew or return them.\n\nThanks,\nLibrary Team"
+    },
+    {
+      "id": "a1b2c3d26e0f0g0h0",
+      "sender": "coach@fitness.com",
+      "title": "Your Weekly Workout Plan",
+      "time": "2025-01-16T06:15:00Z",
+      "email_body": "Hello,\n\nHere's your customized workout plan for this week. Let's get moving!\n\nBest,\nYour Coach"
+    },
+    {
+      "id": "a1b2c3d27e0f0g0h0",
+      "sender": "orders@store.com",
+      "title": "Your Recent Order Summary",
+      "time": "2025-01-15T19:30:00Z",
+      "email_body": "Hi,\n\nHere's a summary of your recent orders with us.\n\nRegards,\nStore Team"
+    },
+    {
+      "id": "a1b2c3d28e0f0g0h0",
+      "sender": "admin@system.com",
+      "title": "System Maintenance Notification",
+      "time": "2025-01-14T22:00:00Z",
+      "email_body": "Hello,\n\nPlanned system maintenance is scheduled for tomorrow night.\n\nThanks,\nAdmin Team"
+    },
+    {
+      "id": "a1b2c3d29e0f0g0h0",
+      "sender": "partner@business.com",
+      "title": "New Partnership Opportunity",
+      "time": "2025-01-13T15:45:00Z",
+      "email_body": "Hi,\n\nWe have an exciting new partnership opportunity to discuss.\n\nBest,\nBusiness Team"
     }
   ];
 export const getUnreadSortedEmails = (): Email[] => mockEmails

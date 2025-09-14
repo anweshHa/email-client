@@ -27,15 +27,15 @@ export default function TrashEmailList(props: {
                 >
                     <div className="flex justify-between items-start mb-2">
                     <span className={`font-medium text-sm ${!email?.read ? 'font-bold' : ''}`}>
-                    {email?.sender_name}
+                      <span dangerouslySetInnerHTML={{ __html: email?.sender_name }} />
                     </span>
                     <span className="text-xs text-gray-500">{new Date(email?.time).toLocaleDateString()}</span>
                     </div>
                     <div className={`text-sm mb-1 ${!email?.read ? 'font-semibold' : ''}`}>
-                    {email?.title}
+                      <span dangerouslySetInnerHTML={{ __html: email?.title }} />
                     </div>
                     <div className="text-xs text-gray-600 truncate">
-                    {email?.email_body}
+                      <span dangerouslySetInnerHTML={{ __html: email?.email_body }} />
                     </div>
                 </div>
                 <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-200">
